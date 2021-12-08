@@ -1,0 +1,92 @@
+﻿@model halproject_core.Models.Register
+@{
+    ViewBag.Title = "Kayıt Ol";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<section class="row justify-content-center" style="height: 100vh">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-5 d-flex align-items-center justify-content-center">
+        <div class="center-sign">
+            <div class="text-center">
+                <a href="/">
+                    <img src="~/Content/img/logo1.png" alt="" />
+                </a>
+                <p class="mt-5 lead">Millennium Personel ve Öğrenci Taşımacılığı sektöründeki kuruluşların tüm iş gereksinimlerini karşılayan, müşteri, tedarikçi ve iş ortakları ile ilişkilerini düzenleyen bir Kurumsal Kaynak Planlaması (ERP) yazılımıdır. Programda taşımacılık firmalarının temel ihtiyaçları olan, personel taşımacılığı, öğrenci taşımacılığı, turizm taşımacılığı, AVM taşımacılığı, Filo yönetimi, Mazot takip, Çetele ve Puantaj hesaplama, Faturalandırma, Pazarlama satış yönetimi, Çeşitli operasyonel faaliyetler, Harita üzrinde rota çizimleri, Belge yönetim sistemi ve Diğer taşımacılık işlemlerini etkili bir biçimde takip edilebilecek şekilde tasarlanmıştır.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 d-flex align-items-center justify-content-center">
+        <section class="body-sign">
+            <div class="center-sign">
+                <div class="panel card-sign">
+                    <div class="card-title-sign text-center">
+                        <h1 class="title text-uppercase font-weight-bold m-0 py-1 px-5" style="font-size: 18px">KAYIT OL</h1>
+                    </div>
+                    <div class="card-body">
+                        @using (Ajax.BeginForm("KayitOlF", "Kullanici", new AjaxOptions { HttpMethod = "POST", OnSuccess = "Success", UpdateTargetId = "myForm", InsertionMode = InsertionMode.Replace }, new { id = "myForm", role = "form", autocomplete = "off" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-3">
+                                        <label>Adınız</label>
+                                        @Html.TextBoxFor(m => m.AD, new { @class = "form-control", type = "text" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-3">
+                                        <label>Soyadınız</label>
+                                        @Html.TextBoxFor(m => m.SOYAD, new { @class = "form-control", type = "text" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-3">
+                                        <label>Email Adresiniz</label>
+                                        @Html.TextBoxFor(m => m.EMAIL, new { @class = "form-control", type = "text" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-3">
+                                        <label>Telefon Numaranız</label>
+                                        @Html.TextBoxFor(m => m.TEL, new { @class = "form-control", type = "text" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-3">
+                                        <label>Şifreniz</label>
+                                        @Html.TextBoxFor(m => m.SIFRE, new { @class = "form-control", type = "password" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-3">
+                                        <label>Şifreniz (Tekrar)</label>
+                                        @Html.TextBoxFor(m => m.SIFRE_TEKRAR, new { @class = "form-control", type = "password" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-end">
+                                <div class="col-lg-4">
+                                    <button type="submit" class="btn btn-primary btn-block mt-2">Kayıt Ol</button>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <p>Zaten bir hesabınız var mı? <a href="/giris-yap">Giriş Yap!</a></p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <p class="text-center text-muted mt-3 mb-3">&copy; Copyright 2017. All Rights Reserved.</p>
+            </div>
+        </section>
+    </div>
+</section>

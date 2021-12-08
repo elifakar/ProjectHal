@@ -1,0 +1,128 @@
+﻿<!doctype html>
+<html class="fixed sidebar-light" lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Hal Project | @ViewBag.Title</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="~/Content/assets/vendor/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/animate/animate.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/font-awesome/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/magnific-popup/magnific-popup.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/owl.carousel/assets/owl.carousel.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/owl.carousel/assets/owl.theme.default.css" />
+
+    @* Select *@
+    <link rel="stylesheet" href="~/Content/assets/vendor/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/jquery-ui/jquery-ui.theme.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/select2/css/select2.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/select2-bootstrap-theme/select2-bootstrap.min.css" />
+
+    <link rel="stylesheet" href="~/Content/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
+    <link rel="stylesheet" href="~/Content/assets/vendor/morris/morris.css" />
+
+    @* Datatables *@
+    <link rel="stylesheet" href="~/Content/assets/vendor/datatables/media/css/dataTables.bootstrap4.css" />
+
+    <link rel="stylesheet" href="~/Content/assets/css/theme.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/skins/default.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/custom.css" />
+    <link rel="stylesheet" href="~/Content/js/toastr/toastr.min.css" />
+
+    <script src="~/Content/assets/vendor/modernizr/modernizr.js"></script>
+    <link rel="stylesheet" href="~/Content/css/site.css" />
+</head>
+<body class="loading-overlay-showing" data-loading-overlay>
+    <div class="loading-overlay">
+        <div class="bounce-loader">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <section class="body">
+        @RenderBody()
+    </section>
+
+    <div class="modal fade" id="modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div id="modalContent"></div>
+    </div>
+
+    <script src="~/Content/assets/vendor/jquery/jquery.js"></script>
+    <script src="~/Content/assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+    <script src="~/Content/assets/vendor/popper/umd/popper.min.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/Content/assets/vendor/common/common.js"></script>
+    <script src="~/Content/assets/vendor/nanoscroller/nanoscroller.js"></script>
+    <script src="~/Content/assets/vendor/magnific-popup/jquery.magnific-popup.js"></script>
+    <script src="~/Content/assets/vendor/jquery-placeholder/jquery-placeholder.js"></script>
+
+    @* Select *@
+    <script src="~/Content/assets/vendor/jquery-ui/jquery-ui.js"></script>
+    <script src="~/Content/assets/vendor/jqueryui-touch-punch/jqueryui-touch-punch.js"></script>
+    <script src="~/Content/assets/vendor/select2/js/select2.js"></script>
+
+    @* Datatables *@
+    <script src="~/Content/assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/assets/vendor/datatables/media/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/assets/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="~/Content/assets/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/Content/assets/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.html5.min.js"></script>
+    <script src="~/Content/assets/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.print.min.js"></script>
+    <script src="~/Content/assets/vendor/datatables/extras/TableTools/JSZip-2.5.0/jszip.min.js"></script>
+    <script src="~/Content/assets/vendor/datatables/extras/TableTools/pdfmake-0.1.32/pdfmake.min.js"></script>
+    <script src="~/Content/assets/vendor/datatables/extras/TableTools/pdfmake-0.1.32/vfs_fonts.js"></script>
+    <script src="~/Content/assets/js/examples/examples.datatables.tabletools.js"></script>
+    @* Wizard *@
+    <script src="~/Content/assets/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap-wizard/jquery.bootstrap.wizard.js"></script>
+    <script src="~/Content/assets/js/examples/examples.wizard.js"></script>
+    @* Masked Input *@
+    <script src="~/Content/assets/vendor/jquery-maskedinput/jquery.maskedinput.js"></script>
+
+    <script src="~/Content/assets/vendor/jquery-appear/jquery-appear.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+    <script src="~/Content/assets/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.js"></script>
+    <script src="~/Content/assets/vendor/flot/jquery.flot.js"></script>
+    <script src="~/Content/assets/vendor/flot.tooltip/flot.tooltip.js"></script>
+    <script src="~/Content/assets/vendor/flot/jquery.flot.pie.js"></script>
+    <script src="~/Content/assets/vendor/flot/jquery.flot.categories.js"></script>
+    <script src="~/Content/assets/vendor/flot/jquery.flot.resize.js"></script>
+    <script src="~/Content/assets/vendor/jquery-sparkline/jquery-sparkline.js"></script>
+    <script src="~/Content/assets/vendor/raphael/raphael.js"></script>
+    <script src="~/Content/assets/vendor/morris/morris.js"></script>
+    <script src="~/Content/assets/vendor/gauge/gauge.js"></script>
+    <script src="~/Content/assets/vendor/snap.svg/snap.svg.js"></script>
+    <script src="~/Content/assets/vendor/liquid-meter/liquid.meter.js"></script>
+
+    <script src="~/Content/assets/js/theme.js"></script>
+    <script src="~/Content/assets/js/custom.js"></script>
+    <script src="~/Content/assets/js/theme.init.js"></script>
+
+    <script src="~/Content/assets/js/examples/examples.dashboard.js"></script>
+
+    <script src="~/Content/js/toastr/toastr.min.js"></script>
+    <script src="~/Content/js/post-form.js"></script>
+    <script src="~/Content/js/show-modal.js"></script>
+    <script>
+        $(function () {
+            $(".tabMenuItem").click(function (e) {
+                e.preventDefault();
+                $("#tabContent").html('<div class="text-center py-5"><img src="/Content/img/loading.gif"/></div>').load($(this).data("url"));
+            });
+
+            $("#selectAll").click(function () {
+                $('input:checkbox').not(this).prop('checked', this.checked);
+            });
+        });
+    </script>
+
+</body>
+</html>

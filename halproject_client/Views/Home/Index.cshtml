@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "Ana Sayfa";
+}
+
+<header class="page-header">
+    <h2>ANA SAYFA</h2>
+    <div class="right-wrapper text-right">
+    </div>
+</header>
+<div class="row">
+    <div class="col-lg-6 mb-3">
+        <section class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="chart-data-selector" id="salesSelectorWrapper">
+                            <h2>
+                                Tek Sayıları:
+                                <strong>
+                                    <select class="form-control" id="salesSelector">
+                                        <option value="Porto Admin" selected>Proje 1</option>
+                                        <option value="Porto Drupal">Proje 2</option>
+                                    </select>
+                                </strong>
+                            </h2>
+
+                            <div id="salesSelectorItems" class="chart-data-selector-items mt-3">
+                                <div class="chart chart-sm chart-active" data-sales-rel="Porto Admin" id="flotDashSales1" style="height: 203px;"></div>
+                                <script>
+                                    var flotDashSales1Data = [{
+                                        data: [
+                                            ["Jan", 140],
+                                            ["Feb", 240],
+                                            ["Mar", 190],
+                                            ["Apr", 140],
+                                            ["May", 180],
+                                            ["Jun", 320],
+                                            ["Jul", 270],
+                                            ["Aug", 180]
+                                        ],
+                                        color: "#0088cc"
+                                    }];
+                                </script>
+                                <div class="chart chart-sm chart-hidden" data-sales-rel="Porto Drupal" id="flotDashSales2"></div>
+                                <script>
+                                    var flotDashSales2Data = [{
+                                        data: [
+                                            ["Jan", 240],
+                                            ["Feb", 240],
+                                            ["Mar", 290],
+                                            ["Apr", 540],
+                                            ["May", 480],
+                                            ["Jun", 220],
+                                            ["Jul", 170],
+                                            ["Aug", 190]
+                                        ],
+                                        color: "#2baab1"
+                                    }];
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-6">
+        <div class="row mb-3">
+            <div class="col-xl-6">
+                <section class="card card-featured-left card-featured-primary mb-3">
+                    <div class="card-body">
+                        <div class="widget-summary">
+                            <div class="widget-summary-col widget-summary-col-icon">
+                                <div class="summary-icon bg-primary">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                            </div>
+                            <div class="widget-summary-col">
+                                <div class="summary">
+                                    <h4 class="title">Proje Sayısı</h4>
+                                    <div class="info">
+                                        <strong class="amount">1</strong>
+                                    </div>
+                                </div>
+                                <div class="summary-footer">
+                                    <a class="text-muted text-uppercase" href="/proje/liste/1">PERSONEL</a> |
+                                    <a class="text-muted text-uppercase" href="/proje/liste/2">OKUL</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-xl-6">
+                <section class="card card-featured-left card-featured-secondary">
+                    <div class="card-body">
+                        <div class="widget-summary">
+                            <div class="widget-summary-col widget-summary-col-icon">
+                                <div class="summary-icon bg-secondary">
+                                    <i class="fa fa-bus"></i>
+                                </div>
+                            </div>
+                            <div class="widget-summary-col">
+                                <div class="summary">
+                                    <h4 class="title">Araç Sayısı</h4>
+                                    <div class="info">
+                                        <strong class="amount">4</strong>
+                                    </div>
+                                </div>
+                                <div class="summary-footer">
+                                    <a class="text-muted text-uppercase" href="/arac/liste">ARAÇ LİSTESİ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
