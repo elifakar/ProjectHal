@@ -143,9 +143,11 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\KullaniciController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PaketController.cs" />
     <Compile Include="DataAccess\ApiDataAccess.cs" />
     <Compile Include="DataAccess\KullaniciDataAccess.cs" />
     <Compile Include="DataAccess\LogDataAccess.cs" />
+    <Compile Include="DataAccess\PaketDataAccess.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

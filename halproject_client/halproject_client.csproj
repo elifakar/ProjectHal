@@ -1901,17 +1901,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiAccess\KullaniciApiAccess.cs" />
+    <Compile Include="ApiAccess\PaketApiAccess.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KullaniciController.cs" />
+    <Compile Include="Controllers\PaketController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ApiHelpers.cs" />
     <Compile Include="Helpers\InMemoryCache.cs" />
+    <Compile Include="Helpers\PaketCheck.cs" />
     <Compile Include="Helpers\SessionCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2586,6 +2589,13 @@
     <Content Include="Views\Home\Profil.cshtml" />
     <Content Include="Views\Shared\_RaporLayout.cshtml" />
     <Content Include="Views\Error\PageError.cshtml" />
+    <Content Include="Views\Home\_Menu.cshtml" />
+    <Content Include="Views\Paket\Index.cshtml" />
+    <Content Include="Views\Paket\SatinAl.cshtml" />
+    <Content Include="Views\Paket\_AlabilecegimPaketler.cshtml" />
+    <Content Include="Views\Paket\_AldigimPaketler.cshtml" />
+    <Content Include="Views\Paket\_Detail.cshtml" />
+    <Content Include="Views\Paket\_SatinAl.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

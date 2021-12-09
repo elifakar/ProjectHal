@@ -1,0 +1,45 @@
+﻿@model List<halproject_core.DTO.PAKET>
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-lg-12 mb-3">
+        <section class="card card-primary">
+            <div class="card-header">
+                <h6 class="h6 card-title p-0 m-0">Diğer Paketler</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-4">
+                            <section class="card card-featured-left card-featured-danger mb-4 shadow">
+                                <div class="card-body">
+                                    <div class="widget-summary">
+                                        <div class="widget-summary-col widget-summary-col-icon">
+                                            <div class="summary-icon bg-danger">
+                                                @Html.Raw(item.IKON)
+                                            </div>
+                                        </div>
+                                        <div class="widget-summary-col">
+                                            <div class="summary">
+                                                <div class="info">
+                                                    <h4 class="p-0 m-0"><strong>@item.ADI</strong></h4>
+                                                </div>
+                                                <h4 class="title">@String.Format("{0:0.00}", item.FIYAT) TL </h4>
+                                            </div>
+                                            <div class="summary-footer">
+                                                <button type="button" onclick="PaketDetail(@item.ID)" class="btn btn-primary btn-xs mr-2">DETAYLAR</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

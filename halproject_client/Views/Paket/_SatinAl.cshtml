@@ -1,0 +1,55 @@
+﻿@model halproject_core.Models.PaketSatinAl
+@{
+    Layout = null;
+}
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h4 class="card-title p-0 m-0">Ödeme Bilgileri</h4>
+    </div>
+    <div class="card-body">
+        @using (Ajax.BeginForm("SatinAlF", "Paket", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "Success", UpdateTargetId = "myForm", InsertionMode = InsertionMode.Replace }, new { id = "myForm", role = "form", autocomplete="off" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row mb-4">
+                <div class="col-lg-6 col-12">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Kart Numarası</b></label>
+                        @Html.TextBoxFor(m => m.KARTNO, new { @class = "form-control", @data_plugin_masked_input = "", @data_input_mask = "9999 9999 9999 9999", @placeholder = "---- ---- ---- ----", @required = "required" })
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Kartın Üzerindeki İsim</b></label>
+                        @Html.TextBoxFor(m => m.ADSOYAD, new { @class = "form-control", @placeholder = "Kart sahibinin adı ve soyadı", @required = "required" })
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Son Kullanma Tarihi</b></label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(m => m.SONTARIH_AY, new { @class = "form-control", @placeholder = "Ay", @required = "required", @Value = "", @MaxLength = "2" })
+                            @Html.TextBoxFor(m => m.SONTARIH_YIL, new { @class = "form-control", @placeholder = "Yıl", @required = "required", @Value = "", @MaxLength = "4" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Güvenlik Kodu</b></label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(m => m.GUVENLIK_KODU, new { @class = "form-control", @placeholder = "CVC/CVV", @required = "required", @Value = "", @MaxLength = "4" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-md-4">
+                    @Html.HiddenFor(m => Model.PAKET_ID)
+                    <button type="submit" class="btn btn-primary btn-block">Satın Al</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

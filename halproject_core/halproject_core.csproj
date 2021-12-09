@@ -49,10 +49,12 @@
     <Compile Include="DTO\APILOG.cs" />
     <Compile Include="DTO\DURUM.cs" />
     <Compile Include="DTO\FIRMA.cs" />
+    <Compile Include="DTO\FIRMAPAKET.cs" />
     <Compile Include="DTO\KANGRUBU.cs" />
     <Compile Include="DTO\KULLANICI.cs" />
     <Compile Include="DTO\MEDENIDURUM.cs" />
     <Compile Include="DTO\MODEL.cs" />
+    <Compile Include="DTO\PAKET.cs" />
     <Compile Include="DTO\PASSWORDRESETTEMP.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="Helpers\ProjectModules.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="Models\ApiLogin.cs" />
     <Compile Include="Models\ForgotPassword.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\PaketSatinAl.cs" />
     <Compile Include="Models\Register.cs" />
     <Compile Include="Models\ResetPassword.cs" />
     <Compile Include="Models\UpdatePassword.cs" />

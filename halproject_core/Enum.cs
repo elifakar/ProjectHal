@@ -36,4 +36,10 @@ namespace halproject_core
         DELETE = 3,
         SELECT = 4
     }
+    public enum PAKETLER
+    {
+        HalProject = 2,
+        ExorderCafe = 3,
+        ETicaret = 4
+    }
 }
