@@ -13,9 +13,9 @@ namespace halproject_api.Helpers
         {
             try
             {
-                NetworkCredential cred = new NetworkCredential("emilenyum@gmail.com", "Ee1234++");
+                NetworkCredential cred = new NetworkCredential("exorder@gmail.com", "Ee1234++");
                 MailMessage mail = new MailMessage();
-                mail.From = new MailAddress("emilenyum@gmail.com", "EMİLENYUM");
+                mail.From = new MailAddress("exorder@gmail.com", "exorder");
                 mail.To.Add(MailAddress);
                 mail.Subject = MailSubject;
                 mail.IsBodyHtml = true;

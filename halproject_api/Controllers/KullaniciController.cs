@@ -157,7 +157,7 @@ namespace halproject_api.Controllers
                 PASSWORDRESETTEMP passwordresettemp = _kullaniciDA.ForgotPassword(forgotpassword, checkKullanici.ID, guid);
                 if (passwordresettemp != null)
                 {
-                    string mailBody = "<a href='emilenyum/sifre-sifirla/" + guid + "'>Şifremi Kurtar</a>";
+                    string mailBody = "<a href='exorder/sifre-sifirla/" + guid + "'>Şifremi Kurtar</a>";
                     _mail.Send(checkKullanici.EMAIL, "Hal Project Şifre Kurtarma", mailBody);
 
                     result.STATUS = true;
