@@ -1,0 +1,75 @@
+﻿@model List<exorderproject_core.DTO.URUN>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="page-header">
+    <h2>ÜRÜNLER</h2>
+    <div class="right-wrapper text-right pr-3 pt-2">
+        <a href="/menuurun/yeni" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Yeni Ürün</a>
+    </div>
+</header>
+<div class="row">
+    <div class="col-lg-12 mb-3">
+        <section class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered table-hover table-striped table-sm mb-0" id="datatable-tabletools">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("Durum")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Ürün Adı")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Ücret")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Ürün No")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Kategori")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Resim")
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr onclick="document.location = '/menuurun/detay/@item.PRODUCT_ID'" style="cursor: pointer">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRODUCT_STATUS_NAME)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRODUCT_NAME)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRODUCT_PRICE)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRODUCT_ORDERNUMBER)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CATEGORY_NAME)
+                                    </td>
+                                    <td>
+                                        <a href="@item.PRODUCT_IMG" target="_blank"><i class="fas fa-search" aria-hidden="true"></i></a> &nbsp; &nbsp;
+                                        <a href="/Urun/Resim/@item.PRODUCT_ID" class="btn btn-success btn-xs" title="Değiştir">Değiştir</a>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+

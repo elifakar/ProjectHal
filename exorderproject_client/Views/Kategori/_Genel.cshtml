@@ -1,0 +1,53 @@
+﻿@using exorderproject_core;
+@model exorderproject_core.DTO.KATEGORI
+@{
+    Layout = null;
+}
+
+<div class="row justify-content-start">
+    <div class="col-lg-9 col-12">
+        <section class="card form-wizard" id="w2">
+            @using (Ajax.BeginForm("EditF", "Kategori", new { updateCode = UpdateCodes.KATEGORI_GENEL.GetHashCode() }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "Success", UpdateTargetId = "myForm", InsertionMode = InsertionMode.Replace }, new { id = "myForm", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+            <div class="row form-group">
+                @*<div class="col-lg-3 col-6">
+            <div class="form-group">
+                <label class="col-form-label"><b>Durum</b></label>
+                @Html.DropDownList("DURUM_ID", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>*@
+                <input type="hidden" name="CATEGORY_C_ID" id="CATEGORY_C_ID" value="@Model.CATEGORY_C_ID" />
+                <div class="col-lg-3 col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Durum</b></label>
+                        @Html.DropDownList("CATEGORY_STATUS", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Kategori Adı</b></label>
+                        @Html.TextBoxFor(m => m.CATEGORY_NAME, new { @class = "form-control", @required = "required" })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-3 col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Açıklama</b></label>
+                        @Html.TextBoxFor(m => m.CATEGORY_DESCRIPTION, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+                
+                <div class="row form-group">
+                    <div class="col-lg-12 text-right">
+                        @Html.HiddenFor(m => m.CATEGORY_ID)
+                        @Html.HiddenFor(m => m.CATEGORY_ID)
+                        <button class="btn btn-primary" type="submit">Kaydet</button>
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</div>

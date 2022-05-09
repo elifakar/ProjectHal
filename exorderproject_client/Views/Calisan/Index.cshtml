@@ -1,0 +1,58 @@
+﻿@model List<exorderproject_core.DTO.CALISAN>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="page-header">
+    <h2>ÇALIŞAN</h2>
+    <div class="right-wrapper text-right pr-3 pt-2">
+        <a href="/bolge/yeni" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Yeni Çalışan</a>
+    </div>
+</header>
+<div class="row">
+    <div class="col-lg-12 mb-3">
+        <section class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered table-hover table-striped table-sm mb-0" id="datatable-tabletools">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("Durum")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Çalışan")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Açıklama")
+                                    </th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr onclick="document.location = '/calisan/detay/@item.EMPLOYEES_ID'" style="cursor: pointer">
+                                    <td>
+                                        @Html.DisplayFor(modelItem=>item.EMPLOYEES_STATUS_NAME)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EMPLOYEES_NAME)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EMPLOYEES_DESCRIPTION)
+                                    </td>
+                                    
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+

@@ -1,0 +1,41 @@
+﻿@model exorderproject_core.Models.UpdatePassword
+@{
+    Layout = null;
+}
+
+<div class="row justify-content-start">
+    <div class="col-lg-9 col-12">
+        <section class="card form-wizard" id="w2">
+            @using (Ajax.BeginForm("SifreGuncelleF", "Kullanici", new AjaxOptions { HttpMethod = "POST", OnSuccess = "Success", UpdateTargetId = "myForm", InsertionMode = InsertionMode.Replace }, new { id = "myForm", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row form-group">
+                    <div class="col-lg-4 col-6">
+                        <div class="form-group">
+                            <label class="col-form-label"><b>Eski Şifre</b></label>
+                            @Html.TextBoxFor(m => m.ESKISIFRE, new { @class = "form-control", type = "password", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <div class="form-group">
+                            <label class="col-form-label"><b>Yeni Şifre</b></label>
+                            @Html.TextBoxFor(m => m.YENISIFRE, new { @class = "form-control", type = "password", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <div class="form-group">
+                            <label class="col-form-label"><b>Yeni Şifre Tekrar</b></label>
+                            @Html.TextBoxFor(m => m.YENISIFRE_TEKRAR, new { @class = "form-control", type = "password", @required = "required" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-12 text-right">
+                        <button class="btn btn-primary" type="submit">Güncelle</button>
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</div>
+@Scripts.Render("~/bundles/wizard-and-notification")

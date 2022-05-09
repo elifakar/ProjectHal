@@ -1,0 +1,53 @@
+﻿@using exorderproject_core;
+@model exorderproject_core.DTO.BOLGE
+@{
+    Layout = null;
+}
+
+<div class="row justify-content-start">
+    <div class="col-lg-9 col-12">
+        <section class="card form-wizard" id="w2">
+            @using (Ajax.BeginForm("EditF", "Bolge", new { updateCode = UpdateCodes.URUN_GENEL.GetHashCode() }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "Success", UpdateTargetId = "myForm", InsertionMode = InsertionMode.Replace }, new { id = "myForm", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+            <div class="row form-group">
+                @*<div class="col-lg-3 col-6">
+            <div class="form-group">
+                <label class="col-form-label"><b>Durum</b></label>
+                @Html.DropDownList("DURUM_ID", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>*@
+                <input type="hidden" value="@Model.REGION_C_ID" id="REGION_C_ID" name="REGION_C_ID" />
+                <div class="col-lg-3 col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Durum</b></label>
+                        @Html.DropDownList("REGION_STATUS", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Bölge Adı</b></label>
+                        @Html.TextBoxFor(m => m.REGION_NAME, new { @class = "form-control", @required = "required" })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-3 col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Açıklama</b></label>
+                        @Html.TextBoxFor(m => m.REGION_DESCRIPTION, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+                
+                <div class="row form-group">
+                    <div class="col-lg-12 text-right">
+                        @Html.HiddenFor(m => m.REGION_ID)
+                        @Html.HiddenFor(m => m.REGION_ID)
+                        <button class="btn btn-primary" type="submit">Kaydet</button>
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</div>

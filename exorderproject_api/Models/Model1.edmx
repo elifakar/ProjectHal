@@ -1,0 +1,963 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjectDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TCATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_ID" />
+          </Key>
+          <Property Name="CATEGORY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CATEGORY_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="CATEGORY_DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="CATEGORY_IMG" Type="nvarchar" MaxLength="80" />
+          <Property Name="CATEGORY_C_ID" Type="int" />
+          <Property Name="CATEGORY_STATUS" Type="int" />
+          <Property Name="CATEGORY_CREATED_USER_ID" Type="int" />
+          <Property Name="CATEGORY_EDITED_USER_ID" Type="int" />
+          <Property Name="CATEGORY_CREATED_DATE" Type="datetime" />
+          <Property Name="CATEGORY_EDITED_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TEMPLOYEEREGION">
+          <Key>
+            <PropertyRef Name="EMPLOYEEREGION_ID" />
+          </Key>
+          <Property Name="EMPLOYEEREGION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMPLOYEEREGION_EMPLOYEE_ID" Type="int" />
+          <Property Name="EMPLOYEEREGION_REGION_ID" Type="int" />
+          <Property Name="EMPLOYEEREGION_DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="EMPLOYEEREGION_C_ID" Type="int" />
+          <Property Name="EMPLOYEEREGION_CREATED_USER_ID" Type="int" />
+          <Property Name="EMPLOYEEREGION_CREATED_DATE" Type="datetime" />
+          <Property Name="EMPLOYEEREGION_EDITED_USER_ID" Type="int" />
+          <Property Name="EMPLOYEEREGION_EDITED_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TEMPLOYEES">
+          <Key>
+            <PropertyRef Name="EMPLOYEES_ID" />
+          </Key>
+          <Property Name="EMPLOYEES_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMPLOYEES_NAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="EMPLOYEES_TITLE" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMPLOYEES_BIRTHDAY" Type="datetime" />
+          <Property Name="EMPLOYEES_ADRESS" Type="nvarchar(max)" />
+          <Property Name="EMPLOYEES_CITY" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMPLOYEES_REGION" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMPLOYEES_POSTAL_CODE" Type="nvarchar" MaxLength="10" />
+          <Property Name="EMPLOYEES_COUNTRY" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMPLOYEES_PHONE_NUMBER" Type="nvarchar" MaxLength="10" />
+          <Property Name="EMPLOYEES_IMG" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMPLOYEES_DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="EMPLOYEES_C_ID" Type="int" />
+          <Property Name="EMPLOYEES_CREATED_USER_ID" Type="int" />
+          <Property Name="EMPLOYEES_CREATED_DATE" Type="datetime" />
+          <Property Name="EMPLOYEES_EDITED_USER_ID" Type="int" />
+          <Property Name="EMPLOYEES_EDITED_DATE" Type="datetime" />
+          <Property Name="EMPLOYEES_STATUS" Type="int" />
+        </EntityType>
+        <EntityType Name="TLOGDATA">
+          <Key>
+            <PropertyRef Name="LOGS_ID" />
+          </Key>
+          <Property Name="LOGS_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOGS_OPERATION" Type="varchar" MaxLength="250" />
+          <Property Name="LOGS_USER_ID" Type="int" />
+          <Property Name="LOGS_CREATED_DATE" Type="datetime" />
+          <Property Name="LOGS_C_ID" Type="int" />
+          <Property Name="LOGS_LOGTYPE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="TLOGERROR">
+          <Key>
+            <PropertyRef Name="LOGERROR_ID" />
+          </Key>
+          <Property Name="LOGERROR_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOGERROR_LOGTYPE_ID" Type="int" />
+          <Property Name="LOGERROR_OPERATION" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LOGERROR_MESSAGE" Type="varchar(max)" />
+          <Property Name="LOGERROR_USER_ID" Type="int" />
+          <Property Name="LOGERROR_CREATED_DATE" Type="datetime" />
+          <Property Name="LOGERROR_C_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="TLOGLOGIN">
+          <Key>
+            <PropertyRef Name="LOGLOGIN_ID" />
+          </Key>
+          <Property Name="LOGLOGIN_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOGLOGIN_USER_ID" Type="int" />
+          <Property Name="LOGLOGIN_USER_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="LOGLOGIN_IP" Type="varchar" MaxLength="50" />
+          <Property Name="LOGLOGIN_BROWSER" Type="varchar" MaxLength="100" />
+          <Property Name="LOGLOGIN_OTHER" Type="varchar" MaxLength="200" />
+          <Property Name="LOGLOGIN_CREATED_DATE" Type="datetime" />
+          <Property Name="LOGLOGIN_DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="LOGLOGIN_C_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="TLOGTYPE">
+          <Key>
+            <PropertyRef Name="LOGTYPE_ID" />
+          </Key>
+          <Property Name="LOGTYPE_ID" Type="int" Nullable="false" />
+          <Property Name="LOGTYPE_ADI" Type="varchar" MaxLength="50" />
+          <Property Name="LOGTYPE_RENK" Type="varchar" MaxLength="50" />
+          <Property Name="LOGTYPE_IMG" Type="varchar" MaxLength="50" />
+          <Property Name="LOGTYPE_STYLE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TORDERDETAIL">
+          <Key>
+            <PropertyRef Name="ORDERDETAIL_ID" />
+          </Key>
+          <Property Name="ORDERDETAIL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORDERDETAIL_ORDER_ID" Type="int" />
+          <Property Name="ORDERDETAIL_PRODUCT_ID" Type="int" />
+          <Property Name="ORDERDETAIL_PRODUCT_PRICE" Type="money" />
+          <Property Name="ORDERDETAIL_QUANTITY" Type="int" />
+          <Property Name="ORDERDETAIL_TOTAL_AMOUNT" Type="money" />
+          <Property Name="ORDERDETAIL_C_ID" Type="int" />
+          <Property Name="ORDERDETAIL_STATUS_ID" Type="int" />
+          <Property Name="ORDERDETAIL_CREATED_DATE" Type="datetime" />
+          <Property Name="ORDERDETAIL_GET_READY_DATE" Type="datetime" />
+          <Property Name="ORDERDETAIL_DISCOUNT" Type="money" />
+          <Property Name="ORDERS_DELIVERY_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TORDERS">
+          <Key>
+            <PropertyRef Name="ORDER_ID" />
+          </Key>
+          <Property Name="ORDER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORDER_CUSTOMER_ID" Type="int" />
+          <Property Name="ORDER_REGION" Type="int" />
+          <Property Name="ORDER_DATE" Type="datetime" />
+          <Property Name="ORDER_CREATED_DATE" Type="datetime" />
+          <Property Name="ORDER_C_ID" Type="int" />
+          <Property Name="ORDER_TABLE_ID" Type="int" />
+          <Property Name="ORDER_STATUS_ID" Type="int" />
+          <Property Name="ORDERS_GET_READY_DATE" Type="datetime" />
+          <Property Name="ORDERS_DELIVERY_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TORDERSTATUS">
+          <Key>
+            <PropertyRef Name="ORDERSTATUS_ID" />
+          </Key>
+          <Property Name="ORDERSTATUS_ID" Type="int" Nullable="false" />
+          <Property Name="ORDERSTATUS_NAME" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TPRODUCT">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRODUCT_NAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="PRODUCT_CATEGORY_ID" Type="int" />
+          <Property Name="PRODUCT_IMG" Type="nvarchar" MaxLength="250" />
+          <Property Name="PRODUCT_QUANTITY" Type="int" />
+          <Property Name="PRODUCT_PRICE" Type="money" />
+          <Property Name="PRODUCT_ORDERNUMBER" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRODUCT_STATUS" Type="int" />
+          <Property Name="PRODUCT_CREATED_DATE" Type="datetime" />
+          <Property Name="PRODUCT_C_ID" Type="int" />
+          <Property Name="PRODUCT_CREATED_USER_ID" Type="int" />
+          <Property Name="PRODUCT_EDITED_USER_ID" Type="int" />
+          <Property Name="PRODUCT_EDITED_DATE" Type="datetime" />
+          <Property Name="PRODUCT_DESCRIPTION" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TQRCODE">
+          <Key>
+            <PropertyRef Name="QRCODE_ID" />
+          </Key>
+          <Property Name="QRCODE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QRCODE_TABLE_ID" Type="int" />
+          <Property Name="QRCODE_REGION" Type="int" />
+          <Property Name="QRCODE_DESCRİPTİON" Type="nvarchar(max)" />
+          <Property Name="QRCODE_CREATED_DATE" Type="datetime" />
+          <Property Name="QRCODE_CREATED_USER_ID" Type="int" />
+          <Property Name="QRCODE_EDITED_DATE" Type="datetime" />
+          <Property Name="QRCODE_EDITED_USER_ID" Type="int" />
+          <Property Name="QRCODE_C_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="TREGION">
+          <Key>
+            <PropertyRef Name="REGION_ID" />
+          </Key>
+          <Property Name="REGION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REGION_NAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="REGION_DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="REGION_C_ID" Type="int" />
+          <Property Name="REGION_CREATED_USER_ID" Type="int" />
+          <Property Name="REGION_EDITED_USER_ID" Type="int" />
+          <Property Name="REGION_CREATED_DATE" Type="datetime" />
+          <Property Name="REGION_EDITED_DATE" Type="datetime" />
+          <Property Name="REGION_STATUS" Type="int" />
+        </EntityType>
+        <EntityType Name="TREGIONS">
+          <Key>
+            <PropertyRef Name="REGIONS_ID" />
+          </Key>
+          <Property Name="REGIONS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REGIONS_REGION_ID" Type="int" />
+          <Property Name="REGIONS_NAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="REGIONS_DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="REGIONS_C_ID" Type="int" />
+          <Property Name="REGIONS_CREATED_USER_ID" Type="int" />
+          <Property Name="REGIONS_EDITED_USER_ID" Type="int" />
+          <Property Name="REGIONS_CREATED_DATE" Type="datetime" />
+          <Property Name="REGIONS_EDITED_DATE" Type="datetime" />
+          <Property Name="REGIONS_STATUS" Type="int" />
+        </EntityType>
+        <EntityType Name="TSTATUS">
+          <Key>
+            <PropertyRef Name="STATUS_ID" />
+          </Key>
+          <Property Name="STATUS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STATUS_NAME" Type="nvarchar" MaxLength="10" />
+          <Property Name="STATUS_C_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="TTABLE">
+          <Key>
+            <PropertyRef Name="TABLE_ID" />
+          </Key>
+          <Property Name="TABLE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TABLE_NUMBER" Type="int" />
+          <Property Name="TABLE_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="TABLE_STATUS" Type="int" />
+          <Property Name="TABLE_DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="TABLE_CREATED_DATE" Type="datetime" />
+          <Property Name="TABLE_CREATED_USER_ID" Type="int" />
+          <Property Name="TABLE_EDITED_DATE" Type="datetime" />
+          <Property Name="TABLE_EDITED_USER_ID" Type="int" />
+          <Property Name="TABLE_C_ID" Type="int" />
+          <Property Name="TABLE_QR_CODE" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="TUSERDATA">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_NAME" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="USER_PASS" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="USER_ADI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="USER_SOYADI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="USER_CREATED_DATE" Type="smalldatetime" />
+          <Property Name="USER_AKTIFPASIF_ID" Type="tinyint" />
+          <Property Name="USER_USERDURUM_ID" Type="int" />
+          <Property Name="USER_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="USER_GURUP_ID" Type="int" />
+          <Property Name="USER_ESKI_PASS" Type="varchar" MaxLength="30" />
+          <Property Name="USER_PASS_EXPIRE_TRH" Type="datetime" />
+          <Property Name="USER_GIRIS_TARIHI" Type="datetime" />
+          <Property Name="USER_MM" Type="int" />
+          <Property Name="USER_GOREV" Type="varchar" MaxLength="50" />
+          <Property Name="USER_TEL" Type="varchar" MaxLength="50" />
+          <Property Name="USER_EDITED_DATE" Type="datetime" />
+          <Property Name="USER_EDITED_USER_ID" Type="int" />
+          <Property Name="USER_CREATED_USER_ID" Type="int" />
+          <Property Name="USER_USERTIPI_ID" Type="int" />
+          <Property Name="USER_IMG" Type="varchar" MaxLength="150" />
+          <Property Name="USER_USERDIL_ID" Type="int" />
+          <Property Name="USER_LAST_LOGGED_SESSION" Type="varchar" MaxLength="400" />
+          <Property Name="USER_LAST_LOGGED_DATE" Type="datetime" />
+          <Property Name="USER_TEST" Type="nvarchar" MaxLength="50" />
+          <Property Name="USER_C_ID" Type="int" />
+        </EntityType>
+        <Association Name="FK_TPRODUCT_TCATEGORY">
+          <End Role="TCATEGORY" Type="Self.TCATEGORY" Multiplicity="0..1" />
+          <End Role="TPRODUCT" Type="Self.TPRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TCATEGORY">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Principal>
+            <Dependent Role="TPRODUCT">
+              <PropertyRef Name="PRODUCT_CATEGORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TREGIONS_TREGION">
+          <End Role="TREGION" Type="Self.TREGION" Multiplicity="0..1" />
+          <End Role="TREGIONS" Type="Self.TREGIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TREGION">
+              <PropertyRef Name="REGION_ID" />
+            </Principal>
+            <Dependent Role="TREGIONS">
+              <PropertyRef Name="REGIONS_REGION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectDbModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TCATEGORY" EntityType="Self.TCATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TEMPLOYEEREGION" EntityType="Self.TEMPLOYEEREGION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TEMPLOYEES" EntityType="Self.TEMPLOYEES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TLOGDATA" EntityType="Self.TLOGDATA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TLOGERROR" EntityType="Self.TLOGERROR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TLOGLOGIN" EntityType="Self.TLOGLOGIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TLOGTYPE" EntityType="Self.TLOGTYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TORDERDETAIL" EntityType="Self.TORDERDETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TORDERS" EntityType="Self.TORDERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TORDERSTATUS" EntityType="Self.TORDERSTATUS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TPRODUCT" EntityType="Self.TPRODUCT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TQRCODE" EntityType="Self.TQRCODE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TREGION" EntityType="Self.TREGION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TREGIONS" EntityType="Self.TREGIONS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TSTATUS" EntityType="Self.TSTATUS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TTABLE" EntityType="Self.TTABLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TUSERDATA" EntityType="Self.TUSERDATA" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TPRODUCT_TCATEGORY" Association="Self.FK_TPRODUCT_TCATEGORY">
+            <End Role="TCATEGORY" EntitySet="TCATEGORY" />
+            <End Role="TPRODUCT" EntitySet="TPRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TREGIONS_TREGION" Association="Self.FK_TREGIONS_TREGION">
+            <End Role="TREGION" EntitySet="TREGION" />
+            <End Role="TREGIONS" EntitySet="TREGIONS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TCATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_ID" />
+          </Key>
+          <Property Name="CATEGORY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CATEGORY_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CATEGORY_IMG" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="CATEGORY_C_ID" Type="Int32" />
+          <Property Name="CATEGORY_STATUS" Type="Int32" />
+          <Property Name="CATEGORY_CREATED_USER_ID" Type="Int32" />
+          <Property Name="CATEGORY_EDITED_USER_ID" Type="Int32" />
+          <Property Name="CATEGORY_CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CATEGORY_EDITED_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TPRODUCT" Relationship="Self.FK_TPRODUCT_TCATEGORY" FromRole="TCATEGORY" ToRole="TPRODUCT" />
+        </EntityType>
+        <EntityType Name="TEMPLOYEEREGION">
+          <Key>
+            <PropertyRef Name="EMPLOYEEREGION_ID" />
+          </Key>
+          <Property Name="EMPLOYEEREGION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMPLOYEEREGION_EMPLOYEE_ID" Type="Int32" />
+          <Property Name="EMPLOYEEREGION_REGION_ID" Type="Int32" />
+          <Property Name="EMPLOYEEREGION_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMPLOYEEREGION_C_ID" Type="Int32" />
+          <Property Name="EMPLOYEEREGION_CREATED_USER_ID" Type="Int32" />
+          <Property Name="EMPLOYEEREGION_CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="EMPLOYEEREGION_EDITED_USER_ID" Type="Int32" />
+          <Property Name="EMPLOYEEREGION_EDITED_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TEMPLOYEES">
+          <Key>
+            <PropertyRef Name="EMPLOYEES_ID" />
+          </Key>
+          <Property Name="EMPLOYEES_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMPLOYEES_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EMPLOYEES_TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMPLOYEES_BIRTHDAY" Type="DateTime" Precision="3" />
+          <Property Name="EMPLOYEES_ADRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMPLOYEES_CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMPLOYEES_REGION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMPLOYEES_POSTAL_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EMPLOYEES_COUNTRY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMPLOYEES_PHONE_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EMPLOYEES_IMG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMPLOYEES_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMPLOYEES_C_ID" Type="Int32" />
+          <Property Name="EMPLOYEES_CREATED_USER_ID" Type="Int32" />
+          <Property Name="EMPLOYEES_CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="EMPLOYEES_EDITED_USER_ID" Type="Int32" />
+          <Property Name="EMPLOYEES_EDITED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="EMPLOYEES_STATUS" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TLOGDATA">
+          <Key>
+            <PropertyRef Name="LOGS_ID" />
+          </Key>
+          <Property Name="LOGS_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOGS_OPERATION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LOGS_USER_ID" Type="Int32" />
+          <Property Name="LOGS_CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="LOGS_C_ID" Type="Int32" />
+          <Property Name="LOGS_LOGTYPE_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TLOGERROR">
+          <Key>
+            <PropertyRef Name="LOGERROR_ID" />
+          </Key>
+          <Property Name="LOGERROR_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOGERROR_LOGTYPE_ID" Type="Int32" />
+          <Property Name="LOGERROR_OPERATION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LOGERROR_MESSAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LOGERROR_USER_ID" Type="Int32" />
+          <Property Name="LOGERROR_CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="LOGERROR_C_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TLOGLOGIN">
+          <Key>
+            <PropertyRef Name="LOGLOGIN_ID" />
+          </Key>
+          <Property Name="LOGLOGIN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOGLOGIN_USER_ID" Type="Int32" />
+          <Property Name="LOGLOGIN_USER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LOGLOGIN_IP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LOGLOGIN_BROWSER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LOGLOGIN_OTHER" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LOGLOGIN_CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="LOGLOGIN_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LOGLOGIN_C_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TLOGTYPE">
+          <Key>
+            <PropertyRef Name="LOGTYPE_ID" />
+          </Key>
+          <Property Name="LOGTYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="LOGTYPE_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LOGTYPE_RENK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LOGTYPE_IMG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LOGTYPE_STYLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TORDERDETAIL">
+          <Key>
+            <PropertyRef Name="ORDERDETAIL_ID" />
+          </Key>
+          <Property Name="ORDERDETAIL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORDERDETAIL_ORDER_ID" Type="Int32" />
+          <Property Name="ORDERDETAIL_PRODUCT_ID" Type="Int32" />
+          <Property Name="ORDERDETAIL_PRODUCT_PRICE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ORDERDETAIL_QUANTITY" Type="Int32" />
+          <Property Name="ORDERDETAIL_TOTAL_AMOUNT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ORDERDETAIL_C_ID" Type="Int32" />
+          <Property Name="ORDERDETAIL_STATUS_ID" Type="Int32" />
+          <Property Name="ORDERDETAIL_CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="ORDERDETAIL_GET_READY_DATE" Type="DateTime" Precision="3" />
+          <Property Name="ORDERDETAIL_DISCOUNT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ORDERS_DELIVERY_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TORDERS">
+          <Key>
+            <PropertyRef Name="ORDER_ID" />
+          </Key>
+          <Property Name="ORDER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORDER_CUSTOMER_ID" Type="Int32" />
+          <Property Name="ORDER_REGION" Type="Int32" />
+          <Property Name="ORDER_DATE" Type="DateTime" Precision="3" />
+          <Property Name="ORDER_CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="ORDER_C_ID" Type="Int32" />
+          <Property Name="ORDER_TABLE_ID" Type="Int32" />
+          <Property Name="ORDER_STATUS_ID" Type="Int32" />
+          <Property Name="ORDERS_GET_READY_DATE" Type="DateTime" Precision="3" />
+          <Property Name="ORDERS_DELIVERY_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TORDERSTATUS">
+          <Key>
+            <PropertyRef Name="ORDERSTATUS_ID" />
+          </Key>
+          <Property Name="ORDERSTATUS_ID" Type="Int32" Nullable="false" />
+          <Property Name="ORDERSTATUS_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TPRODUCT">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRODUCT_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PRODUCT_CATEGORY_ID" Type="Int32" />
+          <Property Name="PRODUCT_IMG" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PRODUCT_QUANTITY" Type="Int32" />
+          <Property Name="PRODUCT_PRICE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PRODUCT_ORDERNUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PRODUCT_STATUS" Type="Int32" />
+          <Property Name="PRODUCT_CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="PRODUCT_C_ID" Type="Int32" />
+          <Property Name="PRODUCT_CREATED_USER_ID" Type="Int32" />
+          <Property Name="PRODUCT_EDITED_USER_ID" Type="Int32" />
+          <Property Name="PRODUCT_EDITED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="PRODUCT_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TCATEGORY" Relationship="Self.FK_TPRODUCT_TCATEGORY" FromRole="TPRODUCT" ToRole="TCATEGORY" />
+        </EntityType>
+        <EntityType Name="TQRCODE">
+          <Key>
+            <PropertyRef Name="QRCODE_ID" />
+          </Key>
+          <Property Name="QRCODE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QRCODE_TABLE_ID" Type="Int32" />
+          <Property Name="QRCODE_REGION" Type="Int32" />
+          <Property Name="QRCODE_DESCRİPTİON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QRCODE_CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="QRCODE_CREATED_USER_ID" Type="Int32" />
+          <Property Name="QRCODE_EDITED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="QRCODE_EDITED_USER_ID" Type="Int32" />
+          <Property Name="QRCODE_C_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TREGION">
+          <Key>
+            <PropertyRef Name="REGION_ID" />
+          </Key>
+          <Property Name="REGION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REGION_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="REGION_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="REGION_C_ID" Type="Int32" />
+          <Property Name="REGION_CREATED_USER_ID" Type="Int32" />
+          <Property Name="REGION_EDITED_USER_ID" Type="Int32" />
+          <Property Name="REGION_CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REGION_EDITED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REGION_STATUS" Type="Int32" />
+          <NavigationProperty Name="TREGIONS" Relationship="Self.FK_TREGIONS_TREGION" FromRole="TREGION" ToRole="TREGIONS" />
+        </EntityType>
+        <EntityType Name="TREGIONS">
+          <Key>
+            <PropertyRef Name="REGIONS_ID" />
+          </Key>
+          <Property Name="REGIONS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REGIONS_REGION_ID" Type="Int32" />
+          <Property Name="REGIONS_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="REGIONS_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="REGIONS_C_ID" Type="Int32" />
+          <Property Name="REGIONS_CREATED_USER_ID" Type="Int32" />
+          <Property Name="REGIONS_EDITED_USER_ID" Type="Int32" />
+          <Property Name="REGIONS_CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REGIONS_EDITED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REGIONS_STATUS" Type="Int32" />
+          <NavigationProperty Name="TREGION" Relationship="Self.FK_TREGIONS_TREGION" FromRole="TREGIONS" ToRole="TREGION" />
+        </EntityType>
+        <EntityType Name="TSTATUS">
+          <Key>
+            <PropertyRef Name="STATUS_ID" />
+          </Key>
+          <Property Name="STATUS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STATUS_NAME" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS_C_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TTABLE">
+          <Key>
+            <PropertyRef Name="TABLE_ID" />
+          </Key>
+          <Property Name="TABLE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TABLE_NUMBER" Type="Int32" />
+          <Property Name="TABLE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TABLE_STATUS" Type="Int32" />
+          <Property Name="TABLE_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TABLE_CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="TABLE_CREATED_USER_ID" Type="Int32" />
+          <Property Name="TABLE_EDITED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="TABLE_EDITED_USER_ID" Type="Int32" />
+          <Property Name="TABLE_C_ID" Type="Int32" />
+          <Property Name="TABLE_QR_CODE" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TUSERDATA">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USER_PASS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USER_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USER_SOYADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USER_CREATED_DATE" Type="DateTime" Precision="0" />
+          <Property Name="USER_AKTIFPASIF_ID" Type="Byte" />
+          <Property Name="USER_USERDURUM_ID" Type="Int32" />
+          <Property Name="USER_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="USER_GURUP_ID" Type="Int32" />
+          <Property Name="USER_ESKI_PASS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="USER_PASS_EXPIRE_TRH" Type="DateTime" Precision="3" />
+          <Property Name="USER_GIRIS_TARIHI" Type="DateTime" Precision="3" />
+          <Property Name="USER_MM" Type="Int32" />
+          <Property Name="USER_GOREV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USER_TEL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USER_EDITED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="USER_EDITED_USER_ID" Type="Int32" />
+          <Property Name="USER_CREATED_USER_ID" Type="Int32" />
+          <Property Name="USER_USERTIPI_ID" Type="Int32" />
+          <Property Name="USER_IMG" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="USER_USERDIL_ID" Type="Int32" />
+          <Property Name="USER_LAST_LOGGED_SESSION" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="USER_LAST_LOGGED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="USER_TEST" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="USER_C_ID" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_TPRODUCT_TCATEGORY">
+          <End Role="TCATEGORY" Type="Self.TCATEGORY" Multiplicity="0..1" />
+          <End Role="TPRODUCT" Type="Self.TPRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TCATEGORY">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Principal>
+            <Dependent Role="TPRODUCT">
+              <PropertyRef Name="PRODUCT_CATEGORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TREGIONS_TREGION">
+          <End Role="TREGION" Type="Self.TREGION" Multiplicity="0..1" />
+          <End Role="TREGIONS" Type="Self.TREGIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TREGION">
+              <PropertyRef Name="REGION_ID" />
+            </Principal>
+            <Dependent Role="TREGIONS">
+              <PropertyRef Name="REGIONS_REGION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TCATEGORY" EntityType="Self.TCATEGORY" />
+          <EntitySet Name="TEMPLOYEEREGION" EntityType="Self.TEMPLOYEEREGION" />
+          <EntitySet Name="TEMPLOYEES" EntityType="Self.TEMPLOYEES" />
+          <EntitySet Name="TLOGDATA" EntityType="Self.TLOGDATA" />
+          <EntitySet Name="TLOGERROR" EntityType="Self.TLOGERROR" />
+          <EntitySet Name="TLOGLOGIN" EntityType="Self.TLOGLOGIN" />
+          <EntitySet Name="TLOGTYPE" EntityType="Self.TLOGTYPE" />
+          <EntitySet Name="TORDERDETAIL" EntityType="Self.TORDERDETAIL" />
+          <EntitySet Name="TORDERS" EntityType="Self.TORDERS" />
+          <EntitySet Name="TORDERSTATUS" EntityType="Self.TORDERSTATUS" />
+          <EntitySet Name="TPRODUCT" EntityType="Self.TPRODUCT" />
+          <EntitySet Name="TQRCODE" EntityType="Self.TQRCODE" />
+          <EntitySet Name="TREGION" EntityType="Self.TREGION" />
+          <EntitySet Name="TREGIONS" EntityType="Self.TREGIONS" />
+          <EntitySet Name="TSTATUS" EntityType="Self.TSTATUS" />
+          <EntitySet Name="TTABLE" EntityType="Self.TTABLE" />
+          <EntitySet Name="TUSERDATA" EntityType="Self.TUSERDATA" />
+          <AssociationSet Name="FK_TPRODUCT_TCATEGORY" Association="Self.FK_TPRODUCT_TCATEGORY">
+            <End Role="TCATEGORY" EntitySet="TCATEGORY" />
+            <End Role="TPRODUCT" EntitySet="TPRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TREGIONS_TREGION" Association="Self.FK_TREGIONS_TREGION">
+            <End Role="TREGION" EntitySet="TREGION" />
+            <End Role="TREGIONS" EntitySet="TREGIONS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectDbModelStoreContainer" CdmEntityContainer="ProjectDbEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ProjectDbModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TCATEGORY">
+            <EntityTypeMapping TypeName="ProjectDbModel.TCATEGORY">
+              <MappingFragment StoreEntitySet="TCATEGORY">
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+                <ScalarProperty Name="CATEGORY_NAME" ColumnName="CATEGORY_NAME" />
+                <ScalarProperty Name="CATEGORY_DESCRIPTION" ColumnName="CATEGORY_DESCRIPTION" />
+                <ScalarProperty Name="CATEGORY_IMG" ColumnName="CATEGORY_IMG" />
+                <ScalarProperty Name="CATEGORY_C_ID" ColumnName="CATEGORY_C_ID" />
+                <ScalarProperty Name="CATEGORY_STATUS" ColumnName="CATEGORY_STATUS" />
+                <ScalarProperty Name="CATEGORY_CREATED_USER_ID" ColumnName="CATEGORY_CREATED_USER_ID" />
+                <ScalarProperty Name="CATEGORY_EDITED_USER_ID" ColumnName="CATEGORY_EDITED_USER_ID" />
+                <ScalarProperty Name="CATEGORY_CREATED_DATE" ColumnName="CATEGORY_CREATED_DATE" />
+                <ScalarProperty Name="CATEGORY_EDITED_DATE" ColumnName="CATEGORY_EDITED_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEMPLOYEEREGION">
+            <EntityTypeMapping TypeName="ProjectDbModel.TEMPLOYEEREGION">
+              <MappingFragment StoreEntitySet="TEMPLOYEEREGION">
+                <ScalarProperty Name="EMPLOYEEREGION_ID" ColumnName="EMPLOYEEREGION_ID" />
+                <ScalarProperty Name="EMPLOYEEREGION_EMPLOYEE_ID" ColumnName="EMPLOYEEREGION_EMPLOYEE_ID" />
+                <ScalarProperty Name="EMPLOYEEREGION_REGION_ID" ColumnName="EMPLOYEEREGION_REGION_ID" />
+                <ScalarProperty Name="EMPLOYEEREGION_DESCRIPTION" ColumnName="EMPLOYEEREGION_DESCRIPTION" />
+                <ScalarProperty Name="EMPLOYEEREGION_C_ID" ColumnName="EMPLOYEEREGION_C_ID" />
+                <ScalarProperty Name="EMPLOYEEREGION_CREATED_USER_ID" ColumnName="EMPLOYEEREGION_CREATED_USER_ID" />
+                <ScalarProperty Name="EMPLOYEEREGION_CREATED_DATE" ColumnName="EMPLOYEEREGION_CREATED_DATE" />
+                <ScalarProperty Name="EMPLOYEEREGION_EDITED_USER_ID" ColumnName="EMPLOYEEREGION_EDITED_USER_ID" />
+                <ScalarProperty Name="EMPLOYEEREGION_EDITED_DATE" ColumnName="EMPLOYEEREGION_EDITED_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEMPLOYEES">
+            <EntityTypeMapping TypeName="ProjectDbModel.TEMPLOYEES">
+              <MappingFragment StoreEntitySet="TEMPLOYEES">
+                <ScalarProperty Name="EMPLOYEES_ID" ColumnName="EMPLOYEES_ID" />
+                <ScalarProperty Name="EMPLOYEES_NAME" ColumnName="EMPLOYEES_NAME" />
+                <ScalarProperty Name="EMPLOYEES_TITLE" ColumnName="EMPLOYEES_TITLE" />
+                <ScalarProperty Name="EMPLOYEES_BIRTHDAY" ColumnName="EMPLOYEES_BIRTHDAY" />
+                <ScalarProperty Name="EMPLOYEES_ADRESS" ColumnName="EMPLOYEES_ADRESS" />
+                <ScalarProperty Name="EMPLOYEES_CITY" ColumnName="EMPLOYEES_CITY" />
+                <ScalarProperty Name="EMPLOYEES_REGION" ColumnName="EMPLOYEES_REGION" />
+                <ScalarProperty Name="EMPLOYEES_POSTAL_CODE" ColumnName="EMPLOYEES_POSTAL_CODE" />
+                <ScalarProperty Name="EMPLOYEES_COUNTRY" ColumnName="EMPLOYEES_COUNTRY" />
+                <ScalarProperty Name="EMPLOYEES_PHONE_NUMBER" ColumnName="EMPLOYEES_PHONE_NUMBER" />
+                <ScalarProperty Name="EMPLOYEES_IMG" ColumnName="EMPLOYEES_IMG" />
+                <ScalarProperty Name="EMPLOYEES_DESCRIPTION" ColumnName="EMPLOYEES_DESCRIPTION" />
+                <ScalarProperty Name="EMPLOYEES_C_ID" ColumnName="EMPLOYEES_C_ID" />
+                <ScalarProperty Name="EMPLOYEES_CREATED_USER_ID" ColumnName="EMPLOYEES_CREATED_USER_ID" />
+                <ScalarProperty Name="EMPLOYEES_CREATED_DATE" ColumnName="EMPLOYEES_CREATED_DATE" />
+                <ScalarProperty Name="EMPLOYEES_EDITED_USER_ID" ColumnName="EMPLOYEES_EDITED_USER_ID" />
+                <ScalarProperty Name="EMPLOYEES_EDITED_DATE" ColumnName="EMPLOYEES_EDITED_DATE" />
+                <ScalarProperty Name="EMPLOYEES_STATUS" ColumnName="EMPLOYEES_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TLOGDATA">
+            <EntityTypeMapping TypeName="ProjectDbModel.TLOGDATA">
+              <MappingFragment StoreEntitySet="TLOGDATA">
+                <ScalarProperty Name="LOGS_ID" ColumnName="LOGS_ID" />
+                <ScalarProperty Name="LOGS_OPERATION" ColumnName="LOGS_OPERATION" />
+                <ScalarProperty Name="LOGS_USER_ID" ColumnName="LOGS_USER_ID" />
+                <ScalarProperty Name="LOGS_CREATED_DATE" ColumnName="LOGS_CREATED_DATE" />
+                <ScalarProperty Name="LOGS_C_ID" ColumnName="LOGS_C_ID" />
+                <ScalarProperty Name="LOGS_LOGTYPE_ID" ColumnName="LOGS_LOGTYPE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TLOGERROR">
+            <EntityTypeMapping TypeName="ProjectDbModel.TLOGERROR">
+              <MappingFragment StoreEntitySet="TLOGERROR">
+                <ScalarProperty Name="LOGERROR_ID" ColumnName="LOGERROR_ID" />
+                <ScalarProperty Name="LOGERROR_LOGTYPE_ID" ColumnName="LOGERROR_LOGTYPE_ID" />
+                <ScalarProperty Name="LOGERROR_OPERATION" ColumnName="LOGERROR_OPERATION" />
+                <ScalarProperty Name="LOGERROR_MESSAGE" ColumnName="LOGERROR_MESSAGE" />
+                <ScalarProperty Name="LOGERROR_USER_ID" ColumnName="LOGERROR_USER_ID" />
+                <ScalarProperty Name="LOGERROR_CREATED_DATE" ColumnName="LOGERROR_CREATED_DATE" />
+                <ScalarProperty Name="LOGERROR_C_ID" ColumnName="LOGERROR_C_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TLOGLOGIN">
+            <EntityTypeMapping TypeName="ProjectDbModel.TLOGLOGIN">
+              <MappingFragment StoreEntitySet="TLOGLOGIN">
+                <ScalarProperty Name="LOGLOGIN_ID" ColumnName="LOGLOGIN_ID" />
+                <ScalarProperty Name="LOGLOGIN_USER_ID" ColumnName="LOGLOGIN_USER_ID" />
+                <ScalarProperty Name="LOGLOGIN_USER_NAME" ColumnName="LOGLOGIN_USER_NAME" />
+                <ScalarProperty Name="LOGLOGIN_IP" ColumnName="LOGLOGIN_IP" />
+                <ScalarProperty Name="LOGLOGIN_BROWSER" ColumnName="LOGLOGIN_BROWSER" />
+                <ScalarProperty Name="LOGLOGIN_OTHER" ColumnName="LOGLOGIN_OTHER" />
+                <ScalarProperty Name="LOGLOGIN_CREATED_DATE" ColumnName="LOGLOGIN_CREATED_DATE" />
+                <ScalarProperty Name="LOGLOGIN_DESCRIPTION" ColumnName="LOGLOGIN_DESCRIPTION" />
+                <ScalarProperty Name="LOGLOGIN_C_ID" ColumnName="LOGLOGIN_C_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TLOGTYPE">
+            <EntityTypeMapping TypeName="ProjectDbModel.TLOGTYPE">
+              <MappingFragment StoreEntitySet="TLOGTYPE">
+                <ScalarProperty Name="LOGTYPE_ID" ColumnName="LOGTYPE_ID" />
+                <ScalarProperty Name="LOGTYPE_ADI" ColumnName="LOGTYPE_ADI" />
+                <ScalarProperty Name="LOGTYPE_RENK" ColumnName="LOGTYPE_RENK" />
+                <ScalarProperty Name="LOGTYPE_IMG" ColumnName="LOGTYPE_IMG" />
+                <ScalarProperty Name="LOGTYPE_STYLE" ColumnName="LOGTYPE_STYLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TORDERDETAIL">
+            <EntityTypeMapping TypeName="ProjectDbModel.TORDERDETAIL">
+              <MappingFragment StoreEntitySet="TORDERDETAIL">
+                <ScalarProperty Name="ORDERDETAIL_ID" ColumnName="ORDERDETAIL_ID" />
+                <ScalarProperty Name="ORDERDETAIL_ORDER_ID" ColumnName="ORDERDETAIL_ORDER_ID" />
+                <ScalarProperty Name="ORDERDETAIL_PRODUCT_ID" ColumnName="ORDERDETAIL_PRODUCT_ID" />
+                <ScalarProperty Name="ORDERDETAIL_PRODUCT_PRICE" ColumnName="ORDERDETAIL_PRODUCT_PRICE" />
+                <ScalarProperty Name="ORDERDETAIL_QUANTITY" ColumnName="ORDERDETAIL_QUANTITY" />
+                <ScalarProperty Name="ORDERDETAIL_TOTAL_AMOUNT" ColumnName="ORDERDETAIL_TOTAL_AMOUNT" />
+                <ScalarProperty Name="ORDERDETAIL_C_ID" ColumnName="ORDERDETAIL_C_ID" />
+                <ScalarProperty Name="ORDERDETAIL_STATUS_ID" ColumnName="ORDERDETAIL_STATUS_ID" />
+                <ScalarProperty Name="ORDERDETAIL_CREATED_DATE" ColumnName="ORDERDETAIL_CREATED_DATE" />
+                <ScalarProperty Name="ORDERDETAIL_GET_READY_DATE" ColumnName="ORDERDETAIL_GET_READY_DATE" />
+                <ScalarProperty Name="ORDERDETAIL_DISCOUNT" ColumnName="ORDERDETAIL_DISCOUNT" />
+                <ScalarProperty Name="ORDERS_DELIVERY_DATE" ColumnName="ORDERS_DELIVERY_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TORDERS">
+            <EntityTypeMapping TypeName="ProjectDbModel.TORDERS">
+              <MappingFragment StoreEntitySet="TORDERS">
+                <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+                <ScalarProperty Name="ORDER_CUSTOMER_ID" ColumnName="ORDER_CUSTOMER_ID" />
+                <ScalarProperty Name="ORDER_REGION" ColumnName="ORDER_REGION" />
+                <ScalarProperty Name="ORDER_DATE" ColumnName="ORDER_DATE" />
+                <ScalarProperty Name="ORDER_CREATED_DATE" ColumnName="ORDER_CREATED_DATE" />
+                <ScalarProperty Name="ORDER_C_ID" ColumnName="ORDER_C_ID" />
+                <ScalarProperty Name="ORDER_TABLE_ID" ColumnName="ORDER_TABLE_ID" />
+                <ScalarProperty Name="ORDER_STATUS_ID" ColumnName="ORDER_STATUS_ID" />
+                <ScalarProperty Name="ORDERS_GET_READY_DATE" ColumnName="ORDERS_GET_READY_DATE" />
+                <ScalarProperty Name="ORDERS_DELIVERY_DATE" ColumnName="ORDERS_DELIVERY_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TORDERSTATUS">
+            <EntityTypeMapping TypeName="ProjectDbModel.TORDERSTATUS">
+              <MappingFragment StoreEntitySet="TORDERSTATUS">
+                <ScalarProperty Name="ORDERSTATUS_ID" ColumnName="ORDERSTATUS_ID" />
+                <ScalarProperty Name="ORDERSTATUS_NAME" ColumnName="ORDERSTATUS_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TPRODUCT">
+            <EntityTypeMapping TypeName="ProjectDbModel.TPRODUCT">
+              <MappingFragment StoreEntitySet="TPRODUCT">
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
+                <ScalarProperty Name="PRODUCT_CATEGORY_ID" ColumnName="PRODUCT_CATEGORY_ID" />
+                <ScalarProperty Name="PRODUCT_IMG" ColumnName="PRODUCT_IMG" />
+                <ScalarProperty Name="PRODUCT_QUANTITY" ColumnName="PRODUCT_QUANTITY" />
+                <ScalarProperty Name="PRODUCT_PRICE" ColumnName="PRODUCT_PRICE" />
+                <ScalarProperty Name="PRODUCT_ORDERNUMBER" ColumnName="PRODUCT_ORDERNUMBER" />
+                <ScalarProperty Name="PRODUCT_STATUS" ColumnName="PRODUCT_STATUS" />
+                <ScalarProperty Name="PRODUCT_CREATED_DATE" ColumnName="PRODUCT_CREATED_DATE" />
+                <ScalarProperty Name="PRODUCT_C_ID" ColumnName="PRODUCT_C_ID" />
+                <ScalarProperty Name="PRODUCT_CREATED_USER_ID" ColumnName="PRODUCT_CREATED_USER_ID" />
+                <ScalarProperty Name="PRODUCT_EDITED_USER_ID" ColumnName="PRODUCT_EDITED_USER_ID" />
+                <ScalarProperty Name="PRODUCT_EDITED_DATE" ColumnName="PRODUCT_EDITED_DATE" />
+                <ScalarProperty Name="PRODUCT_DESCRIPTION" ColumnName="PRODUCT_DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TQRCODE">
+            <EntityTypeMapping TypeName="ProjectDbModel.TQRCODE">
+              <MappingFragment StoreEntitySet="TQRCODE">
+                <ScalarProperty Name="QRCODE_ID" ColumnName="QRCODE_ID" />
+                <ScalarProperty Name="QRCODE_TABLE_ID" ColumnName="QRCODE_TABLE_ID" />
+                <ScalarProperty Name="QRCODE_REGION" ColumnName="QRCODE_REGION" />
+                <ScalarProperty Name="QRCODE_DESCRİPTİON" ColumnName="QRCODE_DESCRİPTİON" />
+                <ScalarProperty Name="QRCODE_CREATED_DATE" ColumnName="QRCODE_CREATED_DATE" />
+                <ScalarProperty Name="QRCODE_CREATED_USER_ID" ColumnName="QRCODE_CREATED_USER_ID" />
+                <ScalarProperty Name="QRCODE_EDITED_DATE" ColumnName="QRCODE_EDITED_DATE" />
+                <ScalarProperty Name="QRCODE_EDITED_USER_ID" ColumnName="QRCODE_EDITED_USER_ID" />
+                <ScalarProperty Name="QRCODE_C_ID" ColumnName="QRCODE_C_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TREGION">
+            <EntityTypeMapping TypeName="ProjectDbModel.TREGION">
+              <MappingFragment StoreEntitySet="TREGION">
+                <ScalarProperty Name="REGION_ID" ColumnName="REGION_ID" />
+                <ScalarProperty Name="REGION_NAME" ColumnName="REGION_NAME" />
+                <ScalarProperty Name="REGION_DESCRIPTION" ColumnName="REGION_DESCRIPTION" />
+                <ScalarProperty Name="REGION_C_ID" ColumnName="REGION_C_ID" />
+                <ScalarProperty Name="REGION_CREATED_USER_ID" ColumnName="REGION_CREATED_USER_ID" />
+                <ScalarProperty Name="REGION_EDITED_USER_ID" ColumnName="REGION_EDITED_USER_ID" />
+                <ScalarProperty Name="REGION_CREATED_DATE" ColumnName="REGION_CREATED_DATE" />
+                <ScalarProperty Name="REGION_EDITED_DATE" ColumnName="REGION_EDITED_DATE" />
+                <ScalarProperty Name="REGION_STATUS" ColumnName="REGION_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TREGIONS">
+            <EntityTypeMapping TypeName="ProjectDbModel.TREGIONS">
+              <MappingFragment StoreEntitySet="TREGIONS">
+                <ScalarProperty Name="REGIONS_ID" ColumnName="REGIONS_ID" />
+                <ScalarProperty Name="REGIONS_REGION_ID" ColumnName="REGIONS_REGION_ID" />
+                <ScalarProperty Name="REGIONS_NAME" ColumnName="REGIONS_NAME" />
+                <ScalarProperty Name="REGIONS_DESCRIPTION" ColumnName="REGIONS_DESCRIPTION" />
+                <ScalarProperty Name="REGIONS_C_ID" ColumnName="REGIONS_C_ID" />
+                <ScalarProperty Name="REGIONS_CREATED_USER_ID" ColumnName="REGIONS_CREATED_USER_ID" />
+                <ScalarProperty Name="REGIONS_EDITED_USER_ID" ColumnName="REGIONS_EDITED_USER_ID" />
+                <ScalarProperty Name="REGIONS_CREATED_DATE" ColumnName="REGIONS_CREATED_DATE" />
+                <ScalarProperty Name="REGIONS_EDITED_DATE" ColumnName="REGIONS_EDITED_DATE" />
+                <ScalarProperty Name="REGIONS_STATUS" ColumnName="REGIONS_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TSTATUS">
+            <EntityTypeMapping TypeName="ProjectDbModel.TSTATUS">
+              <MappingFragment StoreEntitySet="TSTATUS">
+                <ScalarProperty Name="STATUS_ID" ColumnName="STATUS_ID" />
+                <ScalarProperty Name="STATUS_NAME" ColumnName="STATUS_NAME" />
+                <ScalarProperty Name="STATUS_C_ID" ColumnName="STATUS_C_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TTABLE">
+            <EntityTypeMapping TypeName="ProjectDbModel.TTABLE">
+              <MappingFragment StoreEntitySet="TTABLE">
+                <ScalarProperty Name="TABLE_ID" ColumnName="TABLE_ID" />
+                <ScalarProperty Name="TABLE_NUMBER" ColumnName="TABLE_NUMBER" />
+                <ScalarProperty Name="TABLE_NAME" ColumnName="TABLE_NAME" />
+                <ScalarProperty Name="TABLE_STATUS" ColumnName="TABLE_STATUS" />
+                <ScalarProperty Name="TABLE_DESCRIPTION" ColumnName="TABLE_DESCRIPTION" />
+                <ScalarProperty Name="TABLE_CREATED_DATE" ColumnName="TABLE_CREATED_DATE" />
+                <ScalarProperty Name="TABLE_CREATED_USER_ID" ColumnName="TABLE_CREATED_USER_ID" />
+                <ScalarProperty Name="TABLE_EDITED_DATE" ColumnName="TABLE_EDITED_DATE" />
+                <ScalarProperty Name="TABLE_EDITED_USER_ID" ColumnName="TABLE_EDITED_USER_ID" />
+                <ScalarProperty Name="TABLE_C_ID" ColumnName="TABLE_C_ID" />
+                <ScalarProperty Name="TABLE_QR_CODE" ColumnName="TABLE_QR_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TUSERDATA">
+            <EntityTypeMapping TypeName="ProjectDbModel.TUSERDATA">
+              <MappingFragment StoreEntitySet="TUSERDATA">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="USER_PASS" ColumnName="USER_PASS" />
+                <ScalarProperty Name="USER_ADI" ColumnName="USER_ADI" />
+                <ScalarProperty Name="USER_SOYADI" ColumnName="USER_SOYADI" />
+                <ScalarProperty Name="USER_CREATED_DATE" ColumnName="USER_CREATED_DATE" />
+                <ScalarProperty Name="USER_AKTIFPASIF_ID" ColumnName="USER_AKTIFPASIF_ID" />
+                <ScalarProperty Name="USER_USERDURUM_ID" ColumnName="USER_USERDURUM_ID" />
+                <ScalarProperty Name="USER_EMAIL" ColumnName="USER_EMAIL" />
+                <ScalarProperty Name="USER_GURUP_ID" ColumnName="USER_GURUP_ID" />
+                <ScalarProperty Name="USER_ESKI_PASS" ColumnName="USER_ESKI_PASS" />
+                <ScalarProperty Name="USER_PASS_EXPIRE_TRH" ColumnName="USER_PASS_EXPIRE_TRH" />
+                <ScalarProperty Name="USER_GIRIS_TARIHI" ColumnName="USER_GIRIS_TARIHI" />
+                <ScalarProperty Name="USER_MM" ColumnName="USER_MM" />
+                <ScalarProperty Name="USER_GOREV" ColumnName="USER_GOREV" />
+                <ScalarProperty Name="USER_TEL" ColumnName="USER_TEL" />
+                <ScalarProperty Name="USER_EDITED_DATE" ColumnName="USER_EDITED_DATE" />
+                <ScalarProperty Name="USER_EDITED_USER_ID" ColumnName="USER_EDITED_USER_ID" />
+                <ScalarProperty Name="USER_CREATED_USER_ID" ColumnName="USER_CREATED_USER_ID" />
+                <ScalarProperty Name="USER_USERTIPI_ID" ColumnName="USER_USERTIPI_ID" />
+                <ScalarProperty Name="USER_IMG" ColumnName="USER_IMG" />
+                <ScalarProperty Name="USER_USERDIL_ID" ColumnName="USER_USERDIL_ID" />
+                <ScalarProperty Name="USER_LAST_LOGGED_SESSION" ColumnName="USER_LAST_LOGGED_SESSION" />
+                <ScalarProperty Name="USER_LAST_LOGGED_DATE" ColumnName="USER_LAST_LOGGED_DATE" />
+                <ScalarProperty Name="USER_TEST" ColumnName="USER_TEST" />
+                <ScalarProperty Name="USER_C_ID" ColumnName="USER_C_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

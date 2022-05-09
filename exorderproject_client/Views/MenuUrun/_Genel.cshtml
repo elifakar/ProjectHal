@@ -1,0 +1,76 @@
+﻿@using exorderproject_core;
+@model exorderproject_core.DTO.URUN
+@{
+    Layout = null;
+}
+
+<div class="row justify-content-start">
+    <div class="col-lg-9 col-12">
+        <section class="card form-wizard" id="w2">
+            @using (Ajax.BeginForm("EditF", "MenuUrun", new { updateCode = UpdateCodes.URUN_GENEL.GetHashCode() }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "Success", UpdateTargetId = "myForm", InsertionMode = InsertionMode.Replace }, new { id = "myForm", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+            <div class="row form-group">
+                @*<div class="col-lg-3 col-6">
+            <div class="form-group">
+                <label class="col-form-label"><b>Durum</b></label>
+                @Html.DropDownList("DURUM_ID", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>*@
+                <div class="col-lg-3 col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Durum</b></label>
+                        @Html.DropDownList("PRODUCT_STATUS", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Ürün Adı</b></label>
+                        @Html.TextBoxFor(m => m.PRODUCT_NAME, new { @class = "form-control", @required = "required" })
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Tutar</b></label>
+                        @Html.TextBoxFor(m => m.PRODUCT_PRICE, new { @class = "form-control", @required = "required" })
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Stok</b></label>
+                        @Html.TextBoxFor(m => m.PRODUCT_QUANTITY, new { @class = "form-control", @required = "required", @number = "number" })
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-3 col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Kategori</b></label>
+                        @Html.DropDownList("PRODUCT_CATEGORY_ID", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Ürün kodu</b></label>
+                        @Html.TextBoxFor(m => m.PRODUCT_ORDERNUMBER, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="form-group">
+                        <label class="col-form-label"><b>Açıklama</b></label>
+                        @Html.TextBoxFor(m => m.PRODUCT_DESCRIPTION, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+                
+                <div class="row form-group">
+                    <div class="col-lg-12 text-right">
+                        @Html.HiddenFor(m => m.PRODUCT_C_ID)
+                        @Html.HiddenFor(m => m.PRODUCT_ID)
+                        <button class="btn btn-primary" type="submit">Kaydet</button>
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</div>

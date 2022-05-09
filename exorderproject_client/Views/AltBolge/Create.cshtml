@@ -1,0 +1,70 @@
+﻿@model exorderproject_core.DTO.ALTBOLGE
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="page-header">
+    <h2>YENİ BÖLGE</h2>
+    <div class="right-wrapper text-right pr-3 pt-2">
+        <a href="/altbolge/liste" class="btn btn-danger btn-sm text-light"><i class="fa fa-chevron-left mr-2"></i>Alt Bölge Listesi</a>
+    </div>
+</header>
+<div class="row">
+    <div class="col-lg-12 mb-3">
+        <section class="card">
+            <div class="card-body">
+                <div class="row justify-content-start">
+                    <div class="col-lg-9 col-12">
+                        <section class="card form-wizard" id="w2">
+                            <div class="tabs">
+                                <ul class="nav nav-tabs nav-justify">
+                                    <li class="nav-item active">
+                                        <a href="#w2-account" data-toggle="tab" class="nav-link text-center">
+                                            
+                                            Genel Bilgiler
+                                        </a>
+                                    </li>
+                                   
+                                </ul>
+                                @using (Ajax.BeginForm("CreateF", "AltBolge", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "Success", UpdateTargetId = "myForm", InsertionMode = InsertionMode.Replace }, new { id = "myForm", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="tab-content">
+                                        <div id="w2-account" class="tab-pane p-3 active">
+                                            <div class="row form-group">
+                                                <div class="col-lg-3 col-6">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label"><b>Alt Bölge Adı</b></label>
+                                                        @Html.TextBoxFor(m => m.REGIONS_NAME, new { @class = "form-control", @required = "required" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                
+                                                <div class="col-lg-3 col-6">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label"><b>Açıklama</b></label>
+                                                        @Html.TextBoxFor(m => m.REGIONS_DESCRIPTION, new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-lg-12 text-right">
+                                                    <button class="btn btn-primary" type="submit">Kaydet</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                }
+                            </div>
+                            
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

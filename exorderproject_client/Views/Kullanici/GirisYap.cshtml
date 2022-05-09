@@ -1,0 +1,61 @@
+﻿@model exorderproject_core.Models.Login
+@{
+    ViewBag.Title = "Giriş Yap";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<section class="row justify-content-center" style="height: 100vh">
+    <div class="col-lg-5 d-flex align-items-center justify-content-center">
+        <div class="center-sign">
+            <div class="text-center">
+                <a href="/">
+                    @* Logo yolu *@
+                    LOGO
+                </a>
+                <p class="mt-5 lead">HAL PROJECT</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-4 d-flex align-items-center justify-content-center">
+        <section class="body-sign">
+            <div class="center-sign">
+                <div class="panel card-sign">
+                    <div class="card-title-sign text-center">
+                        <h1 class="title text-uppercase font-weight-bold m-0 py-1 px-5" style="font-size: 18px">GİRİŞ YAP</h1>
+                    </div>
+                    <div class="card-body">
+                        @using (Ajax.BeginForm("GirisYapF", "Kullanici", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "Success", UpdateTargetId = "myForm", InsertionMode = InsertionMode.Replace }, new { id = "myForm", role = "form", autocomplete = "off" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-group mb-3">
+                                <label>Email</label>
+                                @Html.TextBoxFor(m => m.EMAIL, new { @class = "form-control", type = "text" })
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <div class="clearfix">
+                                    <label class="float-left">Şifre</label>
+                                    <a href="/sifremi-unuttum" class="float-right">Şifremi Unuttum?</a>
+                                </div>
+                                @Html.TextBoxFor(m => m.SIFRE, new { @class = "form-control", type = "password" })
+                            </div>
+                            <div class="row justify-content-end">
+                                <div class="col-lg-4">
+                                    <button type="submit" class="btn btn-primary btn-block mt-2">Giriş Yap</button>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <p>Henüz bir hesabınız yok mu? <a href="/kayit-ol">Kayıt Ol!</a></p>
+                                </div>
+                            </div>}
+                    </div>
+                </div>
+
+                <p class="text-center text-muted mt-3 mb-3">&copy; Copyright 2021. All Rights Reserved.</p>
+            </div>
+        </section>
+    </div>
+</section>

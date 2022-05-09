@@ -1,0 +1,111 @@
+﻿@model exorderproject_core.Models.PaketList
+@{
+    Layout = null;
+}
+<div class="nano">
+    <div class="nano-content">
+        <nav id="menu" class="nav-main" role="navigation">
+
+            <ul class="nav nav-main">
+                <li class="nav-active">
+                    <a class="nav-link" href="/">
+                        <i class="fas fa-home" aria-hidden="true"></i>
+                        <span>ANA SAYFA</span>
+                    </a>
+                </li>
+
+                <li class="nav-parent">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-utensils" aria-hidden="true"></i>
+                        <span>EXORDER CAFE</span>
+                    </a>
+                    <ul class="nav nav-children">
+                        <li>
+                            <a class="nav-link" href="/bolge/liste">
+                                BÖLGE
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/altbolge/liste">
+                                ALT BÖLGE
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/kategori/liste">
+                                KATEGORİ
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/menuurun/liste">
+                                ÜRÜNLER
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/calisan/liste">
+                                ÇALIŞANLAR
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-parent">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-store" aria-hidden="true"></i>
+                        <span>EXORDER HAL</span>
+                    </a>
+                    <ul class="nav nav-children">
+                        <li>
+                            <a class="nav-link" href="/kategori/liste">
+                                KATEGORİ
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/urun/liste">
+                                ÜRÜNLER
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-parent">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-user-shield" aria-hidden="true"></i>
+                        <span>YÖNETİM</span>
+                    </a>
+                    <ul class="nav nav-children">
+                        <li>
+                            <a class="nav-link" href="/kullanici/liste">
+                                KULLANICI LİSTESİ
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-parent">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-puzzle-piece" aria-hidden="true"></i>
+                        <span>EXORDER PAKETLERİ</span>
+                    </a>
+                    <ul class="nav nav-children">
+                        <li>
+                            <a class="nav-link" href="/paket/liste">
+                                PAKET LİSTESİ
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <script>
+        if (typeof localStorage !== 'undefined') {
+            if (localStorage.getItem('sidebar-left-position') !== null) {
+                var initialPosition = localStorage.getItem('sidebar-left-position'),
+                    sidebarLeft = document.querySelector('#sidebar-left .nano-content');
+
+                sidebarLeft.scrollTop = initialPosition;
+            }
+        }
+    </script>
+</div>

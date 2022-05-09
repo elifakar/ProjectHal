@@ -1,0 +1,63 @@
+﻿@model List<exorderproject_core.DTO.KATEGORI>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="page-header">
+    <h2>KATEGORİ</h2>
+    <div class="right-wrapper text-right pr-3 pt-2">
+        <a href="/kategori/yeni" class="btn btn-primary btn-sm"><i class="fa fa-plus mr-2"></i>Yeni Kategori</a>
+    </div>
+</header>
+<div class="row">
+    <div class="col-lg-12 mb-3">
+        <section class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered table-hover table-striped table-sm mb-0" id="datatable-tabletools">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayName("Durum")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Kategori")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Açıklama")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Resim")
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr onclick="document.location = '/kategori/detay/@item.CATEGORY_ID'" style="cursor: pointer">
+                                    <td>
+                                        @Html.DisplayFor(modelItem=>item.CATEGORY_STATUS_NAME)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CATEGORY_NAME)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CATEGORY_DESCRIPTION)
+                                    </td>
+                                    <td>
+                                        <a href="@item.CATEGORY_IMG" target="_blank"><i class="fas fa-search" aria-hidden="true"></i></a> &nbsp; &nbsp;
+                                        <a href="/Urun/Resim/@item.CATEGORY_ID" class="btn btn-success btn-xs" title="Değiştir">Değiştir</a>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
