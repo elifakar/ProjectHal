@@ -265,5 +265,212 @@ namespace exorderproject_api.Controllers
                 return result;
             }
         }
+
+        /// <summary>
+        /// Body parametresinde belirtilen ürün id ye ait stok bilgilerini işlem sırasına göre getirir.
+        /// </summary>
+        /// <param name="id">Id ürün id için kullanılmaktadır</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("stoklist/{id}")]
+        public ApiResult<List<STOK>> StockInformation(int id)
+        {
+            ApiResult<List<STOK>> result = new ApiResult<List<STOK>> { R = null, DATE = DateTime.Now, STATUS = false };
+
+            try
+            {
+                List<STOK> stokBilgileri = _urunDA.StockInformation(id);
+
+                result.STATUS = true;
+                result.MESSAGE = "Başarılı";
+                result.STATUS_CODE = ApiResponseCode.SUCCESS.GetHashCode();
+                result.R = stokBilgileri;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.MESSAGE = ApiResponseCode.SERVIS_EXCEPTION.ToString() + ": " + ex.Message;
+                result.STATUS_CODE = ApiResponseCode.SERVIS_EXCEPTION.GetHashCode();
+                return result;
+            }
+        }
+
+
+        /// <summary>
+        /// Body parametresinde belirtilen stok id ye ait stok bilgilerini siler.
+        /// </summary>
+        /// <param name="stok"></param>
+        /// <param name="firma">Firma id yetki kontrolü için kullanılmaktadır</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("dstok/{firma}")]
+        public ApiResult<bool> StokDelete([FromBody] STOK stok, int firma)
+        {
+            ApiResult<bool> result = new ApiResult<bool> { R = false, DATE = DateTime.Now, STATUS = false };
+
+            try
+            {
+                if (stok == null)
+                {
+                    result.MESSAGE = "Zorunlu alanları doldurunuz.";
+                    result.STATUS_CODE = ApiResponseCode.MISSING_BODY_PARAMS.GetHashCode();
+                    return result;
+                }
+
+                if (_urunDA.GetById(stok.STOCK_PRODUCT_ID) != null)
+                {
+                    if (stok.STOCK_PRODUCT_C_ID != firma)
+                    {
+                        result.MESSAGE = "Bu işlem için yetkiniz yok.";
+                        result.STATUS_CODE = ApiResponseCode.UNAUTHORIZED.GetHashCode();
+                        return result;
+                    }
+
+                    bool deleteResult = _urunDA.StockDelete(stok.STOCK_ID);
+                    if (deleteResult == false)
+                    {
+                        result.MESSAGE = "Stok Silinemedi.";
+                        result.STATUS_CODE = ApiResponseCode.DELETE_ERROR.GetHashCode();
+                        return result;
+                    }
+                }
+                else
+                {
+                    result.MESSAGE = "Girdiğiniz id değerine ait stok bulunmamaktadır.";
+                    result.STATUS_CODE = ApiResponseCode.NOT_EXIST.GetHashCode();
+                    return result;
+                }
+
+                result.STATUS = true;
+                result.MESSAGE = "Başarılı";
+                result.STATUS_CODE = ApiResponseCode.SUCCESS.GetHashCode();
+                result.R = true;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.MESSAGE = ApiResponseCode.SERVIS_EXCEPTION.ToString() + ": " + ex.Message;
+                result.STATUS_CODE = ApiResponseCode.SERVIS_EXCEPTION.GetHashCode();
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// Body parametresinde belirtilen ürün id ye ait ürüne stok girişi sağlar.
+        /// </summary>
+        /// <param name="stok"></param>
+        /// <param name="firma">Firma id yetki kontrolü için kullanılmaktadır</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("stok/add/{firma}")]
+        public ApiResult<bool> StokEkle([FromBody] STOK stok, int firma)
+        {
+            ApiResult<bool> result = new ApiResult<bool> { R = false, DATE = DateTime.Now, STATUS = false };
+
+            try
+            {
+                if (stok == null)
+                {
+                    result.MESSAGE = "Zorunlu alanları doldurunuz.";
+                    result.STATUS_CODE = ApiResponseCode.MISSING_BODY_PARAMS.GetHashCode();
+                    return result;
+                }
+
+                if (_urunDA.GetById(stok.STOCK_PRODUCT_ID) != null)
+                {
+                    if (stok.STOCK_PRODUCT_C_ID != firma)
+                    {
+                        result.MESSAGE = "Bu işlem için yetkiniz yok.";
+                        result.STATUS_CODE = ApiResponseCode.UNAUTHORIZED.GetHashCode();
+                        return result;
+                    }
+
+                    bool deleteResult = _urunDA.StockDelete(stok.STOCK_ID);
+                    if (deleteResult == false)
+                    {
+                        result.MESSAGE = "Stok Silinemedi.";
+                        result.STATUS_CODE = ApiResponseCode.DELETE_ERROR.GetHashCode();
+                        return result;
+                    }
+                }
+                else
+                {
+                    result.MESSAGE = "Girdiğiniz id değerine ait stok bulunmamaktadır.";
+                    result.STATUS_CODE = ApiResponseCode.NOT_EXIST.GetHashCode();
+                    return result;
+                }
+
+                result.STATUS = true;
+                result.MESSAGE = "Başarılı";
+                result.STATUS_CODE = ApiResponseCode.SUCCESS.GetHashCode();
+                result.R = true;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.MESSAGE = ApiResponseCode.SERVIS_EXCEPTION.ToString() + ": " + ex.Message;
+                result.STATUS_CODE = ApiResponseCode.SERVIS_EXCEPTION.GetHashCode();
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// Body parametresinde belirtilen ürün id ye ait ürüne stok çıkışı sağlar.
+        /// </summary>
+        /// <param name="stok"></param>
+        /// <param name="firma">Firma id yetki kontrolü için kullanılmaktadır</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("stok/drop/{firma}")]
+        public ApiResult<bool> StokDus([FromBody] STOK stok, int firma)
+        {
+            ApiResult<bool> result = new ApiResult<bool> { R = false, DATE = DateTime.Now, STATUS = false };
+
+            try
+            {
+                if (stok == null)
+                {
+                    result.MESSAGE = "Zorunlu alanları doldurunuz.";
+                    result.STATUS_CODE = ApiResponseCode.MISSING_BODY_PARAMS.GetHashCode();
+                    return result;
+                }
+
+                if (_urunDA.GetById(stok.STOCK_PRODUCT_ID) != null)
+                {
+                    if (stok.STOCK_PRODUCT_C_ID != firma)
+                    {
+                        result.MESSAGE = "Bu işlem için yetkiniz yok.";
+                        result.STATUS_CODE = ApiResponseCode.UNAUTHORIZED.GetHashCode();
+                        return result;
+                    }
+
+                    bool deleteResult = _urunDA.StockDelete(stok.STOCK_ID);
+                    if (deleteResult == false)
+                    {
+                        result.MESSAGE = "Stok Silinemedi.";
+                        result.STATUS_CODE = ApiResponseCode.DELETE_ERROR.GetHashCode();
+                        return result;
+                    }
+                }
+                else
+                {
+                    result.MESSAGE = "Girdiğiniz id değerine ait stok bulunmamaktadır.";
+                    result.STATUS_CODE = ApiResponseCode.NOT_EXIST.GetHashCode();
+                    return result;
+                }
+
+                result.STATUS = true;
+                result.MESSAGE = "Başarılı";
+                result.STATUS_CODE = ApiResponseCode.SUCCESS.GetHashCode();
+                result.R = true;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.MESSAGE = ApiResponseCode.SERVIS_EXCEPTION.ToString() + ": " + ex.Message;
+                result.STATUS_CODE = ApiResponseCode.SERVIS_EXCEPTION.GetHashCode();
+                return result;
+            }
+        }
     }
 }

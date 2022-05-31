@@ -60,6 +60,7 @@
     <Compile Include="DTO\MODEL.cs" />
     <Compile Include="DTO\PAKET.cs" />
     <Compile Include="DTO\PASSWORDRESETTEMP.cs" />
+    <Compile Include="DTO\STOK.cs" />
     <Compile Include="DTO\URUN.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="Helpers\ProjectModules.cs" />

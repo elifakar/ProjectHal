@@ -732,6 +732,37 @@
             <param name="firma">Firma id yetki kontrolü için kullanılmaktadır</param>
             <returns></returns>
         </member>
+        <member name="M:exorderproject_api.Controllers.ProductController.StockInformation(System.Int32)">
+            <summary>
+            Body parametresinde belirtilen ürün id ye ait stok bilgilerini işlem sırasına göre getirir.
+            </summary>
+            <param name="id">Id ürün id için kullanılmaktadır</param>
+            <returns></returns>
+        </member>
+        <member name="M:exorderproject_api.Controllers.ProductController.StokDelete(exorderproject_core.DTO.STOK,System.Int32)">
+            <summary>
+            Body parametresinde belirtilen stok id ye ait stok bilgilerini siler.
+            </summary>
+            <param name="stok"></param>
+            <param name="firma">Firma id yetki kontrolü için kullanılmaktadır</param>
+            <returns></returns>
+        </member>
+        <member name="M:exorderproject_api.Controllers.ProductController.StokEkle(exorderproject_core.DTO.STOK,System.Int32)">
+            <summary>
+            Body parametresinde belirtilen ürün id ye ait ürüne stok girişi sağlar.
+            </summary>
+            <param name="stok"></param>
+            <param name="firma">Firma id yetki kontrolü için kullanılmaktadır</param>
+            <returns></returns>
+        </member>
+        <member name="M:exorderproject_api.Controllers.ProductController.StokDus(exorderproject_core.DTO.STOK,System.Int32)">
+            <summary>
+            Body parametresinde belirtilen ürün id ye ait ürüne stok çıkışı sağlar.
+            </summary>
+            <param name="stok"></param>
+            <param name="firma">Firma id yetki kontrolü için kullanılmaktadır</param>
+            <returns></returns>
+        </member>
         <member name="M:exorderproject_api.Controllers.RegionController.All(System.Int32)">
             <summary>
             Firma id ye göre bölge bilgilerini listeler

@@ -64,24 +64,25 @@ namespace exorderproject_api.Areas.HelpPage.Controllers
 
         public ActionResult Login(string txtusername,string txtpassword)
         {
+            Session["apiLoginStatus"] = "Ok";
             SqlConnection con;
             string connectionString = ConfigurationManager.AppSettings["connectionString"];
 
-            using (con = new SqlConnection(connectionString))
-            {
-                string sqlQuery = $@"SELECT * FROM TAPIKULLANICI WHERE APIKULLANICI_KULLANICI_ADI = @APIKULLANICI_KULLANICI_ADI AND APIKULLANICI_SIFRE=@APIKULLANICI_SIFRE";
+            //using (con = new SqlConnection(connectionString))
+            //{
+            //    string sqlQuery = $@"SELECT * FROM TAPIKULLANICI WHERE APIKULLANICI_KULLANICI_ADI = @APIKULLANICI_KULLANICI_ADI AND APIKULLANICI_SIFRE=@APIKULLANICI_SIFRE";
 
-                using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
-                {
-                    con.Open();
-                    cmd.Parameters.AddWithValue("@APIKULLANICI_KULLANICI_ADI", txtusername);
-                    cmd.Parameters.AddWithValue("@APIKULLANICI_SIFRE", txtpassword);
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
-                    Session["apiLoginStatus"] = count > 0 ? "Ok" : null;
+            //    using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
+            //    {
+            //        con.Open();
+            //        cmd.Parameters.AddWithValue("@APIKULLANICI_KULLANICI_ADI", txtusername);
+            //        cmd.Parameters.AddWithValue("@APIKULLANICI_SIFRE", txtpassword);
+            //        int count = Convert.ToInt32(cmd.ExecuteScalar());
+            //        Session["apiLoginStatus"] = count > 0 ? "Ok" : null;
 
-                    con.Close();
-                }
-            }
+            //        con.Close();
+            //    }
+            //}
             return RedirectToAction("Index", "Help");
         }
 

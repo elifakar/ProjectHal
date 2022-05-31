@@ -32,7 +32,9 @@ namespace exorderproject_core
     {
         URUN_GENEL = 1,
         URUN_TEDARIKCI = 2,
-        KATEGORI_GENEL=3
+
+        KATEGORI_GENEL = 3,
+        URUN_STOK = 4
     }
     public enum LogCodes
     {

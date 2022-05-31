@@ -36,5 +36,17 @@ namespace exorderproject_client.ApiAccess
             ApiResult<URUN> apiResult = _api.PostRequest<URUN>($"urun/u/{firmaId}/{updateCode}", urun);
             return apiResult.STATUS ? apiResult : throw new Exception(apiResult.MESSAGE);
         }
+
+        internal ApiResult<List<STOK>> StockInformation(int STOCK_PRODUCT_ID)
+        {
+            ApiResult<List<STOK>> apiResult = _api.GetRequest<List<STOK>>($"urun/stoklist/{STOCK_PRODUCT_ID}");
+            return apiResult.STATUS ? apiResult : throw new Exception(apiResult.MESSAGE);
+        }
+
+        internal ApiResult<URUN> GetByStokId(int id, int firmaId)
+        {
+            ApiResult<URUN> apiResult = _api.GetRequest<URUN>($"urun/{id}/{firmaId}");
+            return apiResult.STATUS ? apiResult : throw new Exception(apiResult.MESSAGE);
+        }
     }
 }

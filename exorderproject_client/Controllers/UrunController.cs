@@ -137,6 +137,14 @@ namespace exorderproject_client.Controllers
                 return RedirectToAction("Index");
         }
 
+
+        public ActionResult _StokBilgileri(int id)
+        {
+            int STOCK_PRODUCT_ID = id;
+            ApiResult<List<STOK>> stokList = _urunAA.StockInformation(STOCK_PRODUCT_ID);
+            return View(stokList.R);
+        }
+
         [HttpPost]
         [SessionCheck]
         //[PaketCheck]
